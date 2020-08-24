@@ -19,11 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/tasks', 'TaskController@index')->name('tasks.index');
     Route::post('/tasks', 'TaskController@store')->name('tasks.store');
-    Route::delete('/task/{task}', 'TaskController@destroy')->name('tasks.destroy');
+    Route::delete('/tasks/{task}', 'TaskController@destroy')->name('tasks.destroy');
 });
 
