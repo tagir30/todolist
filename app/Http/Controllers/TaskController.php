@@ -17,11 +17,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = auth()->user()->tasks()->get();
+        $tasks = auth()->user()->tasks()->orderBy('created_at', 'asc')->get();
 
-        return view('tasks.index', [
-            'tasks' => $tasks,
-        ]);
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
